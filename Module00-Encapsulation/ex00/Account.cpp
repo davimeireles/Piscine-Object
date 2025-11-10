@@ -1,10 +1,11 @@
 #include "Account.hpp"
 
 /* Account Constructor */
-Account::Account(float balance) {
+Account::Account() {
 	this->_id = next_id++;
-	this->_value = balance;
+	this->_balance = 0;
 	std::cout << "Account Constructor Called" << "\n";
+	std::cout << "Client ID: " << this->_id << " Client Balance: " << this->_balance << "\n";
 }
 
 /* Account Destructor */

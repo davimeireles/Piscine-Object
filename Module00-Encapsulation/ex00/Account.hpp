@@ -7,9 +7,9 @@ struct Account {
 
     private:
         int _id;
-        float _value;
+        float _balance;
         static int next_id;
-		Account(float balance);
+		Account();
 
     public:
         ~Account();

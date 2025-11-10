@@ -13,7 +13,7 @@ struct Bank {
     public:
 	    Bank();
         ~Bank();
-		void addNewClient(float balance);
+		void addNewClient();
 };
 
 /*

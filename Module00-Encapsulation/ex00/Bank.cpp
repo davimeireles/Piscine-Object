@@ -13,6 +13,6 @@ Bank::~Bank() {
 }
 
 /* Function to create and add a new client into the bank. */
-void Bank::addNewClient(float balance) {
-	_clients.push_back(new Account(balance));
+void Bank::addNewClient() {
+	_clients.push_back(new Account());
 }
