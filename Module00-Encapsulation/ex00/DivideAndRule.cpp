@@ -5,8 +5,6 @@
 int main()
 {
 	// Account creation
-	Account accountA = Account();
-	Account accountB = Account();
 
 	Bank bank = Bank();
 	bank.setBankLiquidity(999);
