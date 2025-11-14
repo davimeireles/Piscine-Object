@@ -1,5 +1,5 @@
 NAME = ex00
-SOURCE = DivideAndRule.cpp
+SOURCE = DivideAndRule.cpp Account.cpp Bank.cpp
 CCFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
 

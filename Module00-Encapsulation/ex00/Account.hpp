@@ -7,20 +7,12 @@ struct Account {
 
     private:
         int _id;
-        float _balance;
+        double _balance;
         static int next_id;
 		Account();
 
     public:
         ~Account();
+		int getID();
+		double getBalance();
 };
-
-/*
-std::ostream& operator << (std::ostream& p_os, const Account& p_account)
-{
-    p_os << "ID - [" << p_account.getAccountID() << "]\nValue - [" << p_account.getAccountValue() << "]\n";
-    return (p_os);
-}
-*/
-
-int Account::next_id = 0;

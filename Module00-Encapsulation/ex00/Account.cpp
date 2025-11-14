@@ -1,5 +1,8 @@
 #include "Account.hpp"
 
+/* Initialize static member */
+int Account::next_id = 0;
+
 /* Account Constructor */
 Account::Account() {
 	this->_id = next_id++;
@@ -11,4 +14,14 @@ Account::Account() {
 /* Account Destructor */
 Account::~Account() {
 	std::cout << "Account Destructor Called" << "\n";
+}
+
+/* Function to return Client ID */
+int Account::getID() {
+	return this->_id;
+}
+
+/* Function to return Client balance */
+double Account::getBalance() {
+	return this->_balance;
 }

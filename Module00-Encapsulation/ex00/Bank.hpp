@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <iomanip>
 #include "Account.hpp"
 
 struct Bank {
@@ -14,13 +15,9 @@ struct Bank {
 	    Bank();
         ~Bank();
 		void addNewClient();
-};
 
-/*
-std::ostream& operator << (std::ostream& p_os, const Bank& p_bank)
-{
-    p_os << "Bank informations : " << std::endl;
-    p_os << "Liquidity : " << p_bank.getBankLiquidity() << std::endl;
-    return (p_os);
-}
-	*/
+		std::vector<Account *>::iterator findClient(int id);
+
+		void removeCliente(int id);
+		void depositMoney(int id, double value);
+};
