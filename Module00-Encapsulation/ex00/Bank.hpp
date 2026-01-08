@@ -5,19 +5,23 @@
 #include <iomanip>
 #include "Account.hpp"
 
-struct Bank {
+struct Bank
+{
 
-    private:
-	    int _liquidity;
-	    std::vector<Account *> _clients;
+private:
+	int _liquidity;
+	std::vector<Account *> _clients;
 
-    public:
-	    Bank();
-        ~Bank();
-		void addNewClient();
+public:
+	Bank();
+	~Bank();
+	void addNewClient(void);
 
-		std::vector<Account *>::iterator findClient(int id);
+	std::vector<Account *>::iterator findClient(int id);
 
-		void removeCliente(int id);
-		void depositMoney(int id, double value);
+	void removeCliente(int id);
+	void depositMoney(int id, double value);
+
+	double getLiquidity(void) const;
+	void giveLoan(int id, double amount);
 };

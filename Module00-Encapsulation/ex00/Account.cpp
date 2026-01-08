@@ -4,7 +4,8 @@
 int Account::next_id = 0;
 
 /* Account Constructor */
-Account::Account() {
+Account::Account()
+{
 	this->_id = next_id++;
 	this->_balance = 0;
 	std::cout << "Account Constructor Called" << "\n";
@@ -12,16 +13,19 @@ Account::Account() {
 }
 
 /* Account Destructor */
-Account::~Account() {
+Account::~Account()
+{
 	std::cout << "Account Destructor Called" << "\n";
 }
 
 /* Function to return Client ID */
-int Account::getID() {
+int Account::getID(void) const
+{
 	return this->_id;
 }
 
 /* Function to return Client balance */
-double Account::getBalance() {
+double Account::getBalance(void) const
+{
 	return this->_balance;
 }

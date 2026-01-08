@@ -3,9 +3,9 @@ SOURCE = DivideAndRule.cpp Account.cpp Bank.cpp
 CCFLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
 
-all: NAME
+all: $(NAME)
 
-NAME:
+$(NAME):
 	$(CC) $(CCFLAGS) -I . $(SOURCE) -o $(NAME)
 
 clean:
@@ -14,4 +14,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: all
+re: fclean all
+
+.PHONY: all clean fclean re

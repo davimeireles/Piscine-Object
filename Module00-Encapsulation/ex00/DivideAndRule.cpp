@@ -3,18 +3,19 @@
 #include "Bank.hpp"
 
 // Color definitions for terminal output
-#define GREEN   "\x1b[32m"
-#define RED     "\x1b[31m"
-#define YELLOW  "\x1b[33m"
-#define BLUE    "\x1b[34m"
+#define GREEN "\x1b[32m"
+#define RED "\x1b[31m"
+#define YELLOW "\x1b[33m"
+#define BLUE "\x1b[34m"
 #define MAGENTA "\x1b[35m"
-#define CYAN    "\x1b[36m"
-#define RESET   "\x1b[0m"
-#define BOLD    "\x1b[1m"
+#define CYAN "\x1b[36m"
+#define RESET "\x1b[0m"
+#define BOLD "\x1b[1m"
 
 int main()
 {
-	std::cout << BOLD << BLUE << "===== BANK SYSTEM COMPREHENSIVE TEST =====" << RESET << std::endl << std::endl;
+	std::cout << BOLD << BLUE << "===== BANK SYSTEM COMPREHENSIVE TEST =====" << RESET << std::endl
+			  << std::endl;
 
 	// Test 1: Create a Bank
 	std::cout << CYAN << "TEST 1: Creating a Bank" << RESET << std::endl;
@@ -57,13 +58,15 @@ int main()
 	// Test 6: Find existing clients
 	std::cout << CYAN << "TEST 6: Finding existing clients" << RESET << std::endl;
 	std::vector<Account *>::iterator it0 = bank.findClient(0);
-	if (it0 != bank.findClient(-1)) {
+	if (it0 != bank.findClient(-1))
+	{
 		std::cout << GREEN << "✓ Client with ID 0 found!" << RESET << std::endl;
 		std::cout << "  Balance: $" << (*it0)->getBalance() << std::endl;
 	}
-	
+
 	std::vector<Account *>::iterator it2 = bank.findClient(2);
-	if (it2 != bank.findClient(-1)) {
+	if (it2 != bank.findClient(-1))
+	{
 		std::cout << GREEN << "✓ Client with ID 2 found!" << RESET << std::endl;
 		std::cout << "  Balance: $" << (*it2)->getBalance() << std::endl;
 	}
@@ -72,7 +75,8 @@ int main()
 	// Test 7: Try to find non-existent client
 	std::cout << CYAN << "TEST 7: Trying to find non-existent client (ID: 999)" << RESET << std::endl;
 	std::vector<Account *>::iterator it_not_found = bank.findClient(999);
-	if (it_not_found == bank.findClient(999)) {
+	if (it_not_found == bank.findClient(999))
+	{
 		std::cout << RED << "✗ Client with ID 999 not found (as expected)" << RESET << std::endl;
 	}
 	std::cout << std::endl;
@@ -123,18 +127,50 @@ int main()
 	// Test 15: Final check - try operations on remaining clients
 	std::cout << CYAN << "TEST 15: Final operations on remaining clients" << RESET << std::endl;
 	std::vector<Account *>::iterator remaining0 = bank.findClient(0);
-	if (remaining0 != bank.findClient(-1)) {
+	if (remaining0 != bank.findClient(-1))
+	{
 		std::cout << GREEN << "✓ Client 0 still exists with balance: $" << (*remaining0)->getBalance() << RESET << std::endl;
 	}
-	
+
 	std::vector<Account *>::iterator remaining2 = bank.findClient(2);
-	if (remaining2 != bank.findClient(-1)) {
+	if (remaining2 != bank.findClient(-1))
+	{
 		std::cout << GREEN << "✓ Client 2 still exists with balance: $" << (*remaining2)->getBalance() << RESET << std::endl;
 	}
 	std::cout << std::endl;
 
-	// Test 16: Bank destruction
-	std::cout << CYAN << "TEST 16: Bank destruction" << RESET << std::endl;
+	// Test 16: Check bank liquidity
+	std::cout << CYAN << "TEST 16: Checking bank liquidity" << RESET << std::endl;
+	std::cout << "Bank liquidity: $" << bank.getLiquidity() << std::endl;
+	std::cout << std::endl;
+
+	// Test 17: Give a loan with sufficient liquidity
+	std::cout << CYAN << "TEST 17: Giving a loan with sufficient liquidity" << RESET << std::endl;
+	bank.giveLoan(0, 100.0);
+	std::cout << std::endl;
+
+	// Test 18: Give another loan
+	std::cout << CYAN << "TEST 18: Giving another loan to different client" << RESET << std::endl;
+	bank.giveLoan(2, 50.0);
+	std::cout << std::endl;
+
+	// Test 19: Try to give a loan with insufficient liquidity
+	std::cout << CYAN << "TEST 19: Trying to give a loan with insufficient liquidity" << RESET << std::endl;
+	bank.giveLoan(0, 100000.0);
+	std::cout << std::endl;
+
+	// Test 20: Try to give negative loan
+	std::cout << CYAN << "TEST 20: Trying to give negative loan amount" << RESET << std::endl;
+	bank.giveLoan(2, -50.0);
+	std::cout << std::endl;
+
+	// Test 21: Try to give loan to non-existent client
+	std::cout << CYAN << "TEST 21: Trying to give loan to non-existent client" << RESET << std::endl;
+	bank.giveLoan(999, 100.0);
+	std::cout << std::endl;
+
+	// Test 22: Bank destruction
+	std::cout << CYAN << "TEST 22: Bank destruction and memory cleanup" << RESET << std::endl;
 	std::cout << YELLOW << "--- Destroying bank and all accounts ---" << RESET << std::endl;
 
 	return (0);
